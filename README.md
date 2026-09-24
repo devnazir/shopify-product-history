@@ -5,13 +5,15 @@ per sales channel, and who or what app did it — as a floating table on the
 product's admin page. This isn't shown anywhere in Shopify's normal product
 UI.
 
-No API token needed — it uses the same session-authenticated endpoint
-Shopify's own admin frontend uses (`/store/<shop>/products/<id>/events.json`),
-authenticated by your existing logged-in browser session.
+No API token needed — it uses the documented
+[`.json` admin URL pattern](https://help.shopify.com/en/manual/shopify-admin/using-json)
+(`/store/<shop>/products/<id>/events.json`), authenticated by your existing
+logged-in browser session rather than an API token.
 
-> This is an internal Shopify admin endpoint, not documented/versioned public
-> API. It works today but could change without notice — fine for ad-hoc
-> debugging, not something to depend on long-term.
+> Events aren't logged in real time — Shopify notes they can take a few
+> minutes to show up in the JSON. And unlike the versioned Admin API, this
+> URL pattern has no stability/versioning guarantees, so treat it as good for
+> ad-hoc debugging rather than something to build critical tooling on.
 
 ## Install as a bookmarklet
 
